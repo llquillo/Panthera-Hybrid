@@ -153,6 +153,18 @@ class Panthera:
 
     def printType(self):
         print(type(self))
+        
+    def __lt__(self, other):
+        if self.generation < other.generation:
+            return self.generation < other.generation
+
+    def __eq__(self, other):
+        if self.generation == other.generation:
+            return self.generation == other.generation
+
+    def __gt__(self, other):
+        if self.generation > other.generation:
+            return self.generation > other.generation
 
 
 class Lion(Panthera):
@@ -287,3 +299,22 @@ cross(t1, t2)
 t1 = Tiger("Tiger", 2, "Male")
 l2 = Lion("Lioness", 1, "Female")
 cross(t1, l2)
+
+# Sorting
+pantherArray = []
+
+for i in range(1, 10):
+    tigerInstance = Tiger("Tiger", i, "Male")
+    pantherArray.append(tigerInstance)
+
+random.shuffle(pantherArray)
+
+print("\n===UNSORTED===")
+for i in pantherArray:
+    print("Name: ", i.name, "Generation: ", i.generation)
+
+pantherArray.sort()
+
+print("\n===SORTED===")
+for i in pantherArray:
+    print("Name: ", i.name, "Generation: ", i.generation)
